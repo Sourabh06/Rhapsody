@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <h1 class="text-center display-4">Create a new Entry</h1>
+    <div class="row">
+        <div class="col-md-4 info-space">
+        <form action="/campgrounds" method="POST">
+
+            <div class="form-group">
+                <input class="form-control" type="text" name="track_name" placeholder="track name">
+            </div>
+                    
+            <div class="form-group">
+                <input class="form-control" type="text" name="artist_name" placeholder="artist name">
+            </div>
+                    
+            <div class="form-group">
+                <input class="form-control" type="text" name="album_name" placeholder="album name">
+            </div>
+            
+            <div class="form-group">
+                <input class="form-control" type="text" name="video_link" placeholder="video_link">
+            </div>
+                    
+            <div class="form-group">
+                <input class="form-control" type="text" name="image" placeholder="image url">
+            </div>
+            
+            <div class="form-group">
+                <input class="form-control" type="text" name="released" placeholder="release date">
+            </div>
+            
+            <div class="form-group">
+                <input class="form-control" type="text" name="genre" placeholder="genre">
+            </div>
+            
+            <div class="form-group">
+                <input class="form-control" type="text" name="description" placeholder="more info">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            </div>
+        </form>
+        <a href="/campgrounds">Go back</a>
+        </div>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>

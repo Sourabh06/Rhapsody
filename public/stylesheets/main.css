@@ -1,0 +1,81 @@
+.card .caption-full {
+    padding: 9px;
+}
+
+.card-body {
+    margin-top: 1em;
+}
+
+.modify-form{
+    display: inline;
+}
+
+.info-space {
+    width: 30%;
+    margin: 25px auto;
+}
+
+.head-center {
+    text-align: center;
+}
+
+.checked {
+    color: orange;
+}
+
+.art
+{
+    background-image: url(/imgs/headb.jpg);
+    width: 100%;
+    height: 140px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+#show {
+    height: 350px;
+}
+
+.container .jumbotron {
+    background-image: url(/imgs/6.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.navbar.scrolled {
+    background: #FF94B6;
+    transition: background 500ms;
+}
+
+iframe {
+    margin-top: 100px; 
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+  }
+  
+  .container .text-muted {
+    margin: 20px 0;
+  }
+  

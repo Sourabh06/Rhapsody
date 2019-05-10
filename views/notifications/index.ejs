@@ -1,0 +1,19 @@
+<% include ../partials/header %> 
+
+<h1>Notifications</h1>
+
+<div class="info">
+	<ul>
+		<% allNotifications.forEach(function(notification) { %>
+		<li>
+			<a href="/campgrounds/<%= notification.campgroundId %>">
+				<%= notification.username %> created a new campground %>
+			</a>
+		</li>
+		<% }); %>
+		<a class="btn btn-default" href="/campgrounds<%= allNotifications.id %>"><i class="fa fa-arrow-left"></i> Go back</a>
+	</ul>
+</div>
+
+
+<% include ../partials/footer %> 

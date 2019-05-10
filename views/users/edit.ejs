@@ -1,0 +1,62 @@
+<% include ../partials/header %>
+
+
+<div class="container">
+        <h2 class="text-center display-4">Edit Profile <%= user.firstName + " " + user.lastName %></h2>
+    <div class="row m-y-2">
+        <div class="col-lg-4 pull-md-8 text-xs-center">
+                <img src="//placehold.it/150" class="m-x-auto img-fluid img-circle" alt="avatar" />
+                <h6 class="m-t-2">Upload a different avatar</h6>
+                <label class="custom-file">
+                    <input type="file" id="file" class="custom-file-input">
+                    <span class="custom-file-control">Choose file</span>
+                </label>
+                <div class="field">
+                    <label for="">About</label>
+                    <textarea class="form-control" name="user[about]" id="" cols="20" rows="5" >
+                        <% if (!user.about) { %>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac sollicitudin lectus, placerat vestibulum magna.<% } else { %> %= user.about %> <% } %>
+                    </textarea>
+                </div>
+        </div>
+        <!-- edit form column -->
+        <div class="col-lg-8 push-md-4 personal-info">
+            <div class="container">
+                <form action="/users/<%= user._id %>/?_method=PUT" method="POST" role="form">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" name="user[firstName]" type="text" value="<%= user.firstName %>" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" name="user[lastName]" type="text" value="<%= user.lastName %>" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" name="user[email]" type="email" value="<%= user.email %>">
+                        </div>
+                    </div>                    
+                    <div class="form-group row">
+                        <div class="col-lg-9">
+                            <a class="col-form-label form-control-label btn btn-lg" href="/forgot">Reset password</a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                        <div class="col-lg-9">
+                            <input type="reset" class="btn btn-secondary" value="Cancel" >
+                            <input type="button" class="btn btn-primary" value="Save Changes" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+             
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

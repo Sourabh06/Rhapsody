@@ -1,0 +1,52 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1 class="text-center"><%= user.firstName + " " + user.lastName %></h1>
+            <div class="card" style="border: none">
+                <img class="img-fluid rounded-circle mx-auto d-block" src="<%= user.avatar %>" alt="user profile image">
+                <div class="caption">
+                    <a class="nav-link text-right" href="mailto:<%= user.email %>"><%= user.email %></a>
+                </div>
+                <a class="btn btn-primary btn-sm>" href="/follow/<%= user.id %>" >
+                    Follow <%= user.username %>
+                </a>
+                <% if(currentUser && currentUser.isAdmin){ %>
+                    <div class="row">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-4">
+                            <a href="../users/<%= user.id %>/edit" class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+                        </div>
+                        
+                    </div>
+                <% } %>
+            </div>
+            <p class="lead">
+                <% if (user.about) { %> 
+                    <%= user.about %>
+                <% } else {%> 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit aliquid, hic id nam ad officia doloremque illum sapiente, tempore eum ab eligendi, maiores ipsam fugiat magnam pariatur assumenda ut incidunt.
+                <% } %>
+            </p>
+            </div>
+        <div class="col-md-8 info-space">
+            <h3><%= user.username %>'s data:</h3>
+            <ul>
+                <% campgrounds.forEach(function(campground) { %>
+                    <li>
+                        <a href="/campgrounds/<%= campground.id %>">
+                        <%= campground.track_name %>
+                        </a>
+                    </li>
+                <% }); %>
+            </ul>  
+        </div>
+    </div>
+    <a href="/campgrounds">Go back</a>
+</div>
+
+
+<% include ../partials/footer %>
