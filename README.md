@@ -1,5 +1,7 @@
 # Rhapsody
 
+![Homepage](screenshot.png)
+
 ## Basic version
 * Has fuzzy search for music
 * Login to add music information as a post
@@ -18,3 +20,5 @@
 ## Bugs
 * Can't edit user profile
 * Few placeholders need edit
+
+[link to my app](https://rhapsody-v1.herokuapp.com/)
