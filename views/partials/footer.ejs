@@ -6,11 +6,34 @@
         </footer>
         <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
         <script>
+            //navbar
             $(function () {
                 $(document).scroll(function(){
                     var $nav = $("#mainNavbar");
                     $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+                });
+            });
+            
+            //image
+
+
+            $(document).ready(function(){
+                
+                // input plugin
+                bsCustomFileInput.init();
+                
+                // get file and preview image
+                $("#inputGroupFile").on('change',function(){
+                    var input = $(this)[0];
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#preview').attr('src', e.target.result).fadeIn('slow');
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    }
                 });
             });
         </script>

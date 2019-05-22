@@ -56,6 +56,15 @@ iframe {
 }
 
 
+input[type='file'] {
+    display: none;
+  }
+
+#preview {
+    background-image:url('//placehold.it/150');
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

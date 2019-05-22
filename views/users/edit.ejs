@@ -5,16 +5,19 @@
         <h2 class="text-center display-4">Edit Profile <%= user.firstName + " " + user.lastName %></h2>
     <div class="row m-y-2">
         <div class="col-lg-4 pull-md-8 text-xs-center">
-                <img src="//placehold.it/150" class="m-x-auto img-fluid img-circle" alt="avatar" />
+                <img id="preview" src="<%= user.avatar %>" class="m-x-auto img-fluid img-circle" alt="avatar" />
                 <h6 class="m-t-2">Upload a different avatar</h6>
-                <label class="custom-file">
-                    <input type="file" id="file" class="custom-file-input">
-                    <span class="custom-file-control">Choose file</span>
-                </label>
+                <input class="form-control" name="user[avatar]" type="text" value="<%= user.avatar %>" >
+                or
+                <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile">
+                        <label class="custom-file-label" for="inputGroupFile" aria-describedby="inputGroupFileAddon">Choose image</label>
+                    </div>
                 <div class="field">
                     <label for="">About</label>
                     <textarea class="form-control" name="user[about]" id="" cols="20" rows="5" >
-                        <% if (!user.about) { %>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac sollicitudin lectus, placerat vestibulum magna.<% } else { %> %= user.about %> <% } %>
+                        <% if (!user.about) { %>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac sollicitudin lectus, placerat vestibulum magna.<% } else { 
+                            user.about } %>
                     </textarea>
                 </div>
         </div>

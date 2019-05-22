@@ -9,7 +9,9 @@ var express        = require("express"),
     Campground     = require("./models/campground"),
     Comment        = require("./models/comment"),
     User           = require("./models/user"),
-    seedDB         = require("./seeds");
+    seedDB         = require("./seeds"),
+    port           = process.env.PORT || 8080;
+
 
 //requiring routes
 var commentRoutes = require("./routes/comments"),
@@ -24,10 +26,28 @@ mongoose.set('useFindAndModify', false);
 // mongoose.set('useNewUrlParser', true);
 // mongoose.set('useCreateIndex', true);
 
-var url = process.env.DATABASEURL || "mongodb://localhost:27017/rhapsody";
-mongoose.connect(url, {useNewUrlParser: true});
+//for heroku
+// var url = process.env.DATABASEURL || "mongodb+srv://sks_123:admin123@rhapsodycluster-2odm3.mongodb.net/test?retryWrites=true";
+// mongoose.connect(url, {
+//   useNewUrlParser: true,
+//   useCreateIndex: true
+// }).then(() => {
+//   console.log('Connected to DB!');
+// }).catch(err => {
+//   console.log('ERROR: ', err.message);
+// });
 
-// mongoose.connect("mongodb://localhost:27017/yelp_camp", {useNewUrlParser: true});
+//for local instance
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/rhapsody";
+mongoose.connect(url, {
+  useNewUrlParser: true, 
+  useCreateIndex: true
+}).then(() => {
+  console.log('Connected to DB!');
+  }).catch(err => {
+       console.log('ERROR: ', err.message);
+    });
+  
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -74,7 +94,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/users/:id", userRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
-
-app.listen(3000,process.env.IP, function(){
+//port was 3000
+app.listen(port, process.env.IP, function(){
     console.log("Rhapsody has started!");
 })

@@ -2,13 +2,13 @@ var express     = require("express"),
 passport        = require("passport"),
 router          = express.Router();
 var User        = require("../models/user");
-var Campground  = require("../models/campground");
-var Notification = require("../models/notification");
-var { isLoggedIn } = require('../middleware');
+Campground      = require("../models/campground");
+Notification    = require("../models/notification");
+middleware      = require('../middleware');
 var async       = require("async");
-var nodemailer  = require("nodemailer");
-var crypto      = require("crypto");
-var dotenv      = require('dotenv').config();
+nodemailer      = require("nodemailer"),
+crypto          = require("crypto"),
+dotenv          = require('dotenv').config();
 
 
 if (dotenv.error) {
@@ -74,7 +74,7 @@ router.get("/logout", function(req, res){
 
 
 // follow user
-router.get('/follow/:id', isLoggedIn, async function(req, res) {
+router.get('/follow/:id', middleware.isLoggedIn, async function(req, res) {
   try {
     let user = await User.findById(req.params.id);
     user.followers.push(req.user._id);
@@ -88,7 +88,7 @@ router.get('/follow/:id', isLoggedIn, async function(req, res) {
 });
 
 // view all notifications
-router.get('/notifications', isLoggedIn, async function(req, res) {
+router.get('/notifications', middleware.isLoggedIn, async function(req, res) {
   try {
     let user = await User.findById(req.user._id).populate({
       path: 'notifications',
@@ -103,7 +103,7 @@ router.get('/notifications', isLoggedIn, async function(req, res) {
 });
 
 // handle notification
-router.get('/notifications/:id', isLoggedIn, async function(req, res) {
+router.get('/notifications/:id', middleware.isLoggedIn, async function(req, res) {
   try {
     let notification = await Notification.findById(req.params.id);
     notification.isRead = true;
@@ -120,7 +120,7 @@ router.get('/notifications/:id', isLoggedIn, async function(req, res) {
 
 
 // forgot password
-router.get('/forgot', function(req, res) {
+router.get('/forgot', middleware.isLoggedIn, function(req, res) {
     res.render('forgot');
   });
   
@@ -151,13 +151,13 @@ router.get('/forgot', function(req, res) {
         var smtpTransport = nodemailer.createTransport({
           service: 'Gmail', 
           auth: {
-            user: 'youremail@gmail.com', //your mail here
+            user: 'skstestmail0@gmail.com', //your mail here
             pass: process.env.GMAILPW
           }
         });
         var mailOptions = {
           to: user.email,
-          from: 'youremail@gmail.com', //your mail here
+          from: 'skstestmail0@gmail.com', //your mail here
           subject: 'Node.js Password Reset',
           text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
             'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -215,13 +215,13 @@ router.get('/forgot', function(req, res) {
         var smtpTransport = nodemailer.createTransport({
           service: 'Gmail', 
           auth: {
-            user: 'youremail@gmail.com', //your mail here
+            user: 'skstestmail0@gmail.com', //your mail here
             pass: process.env.GMAILPW
           }
         });
         var mailOptions = {
           to: user.email,
-          from: 'youremail@gmail.com', //your mail here
+          from: 'skstestmail0@gmail.com', //your mail here
           subject: 'Your password has been changed',
           text: 'Hello,\n\n' +
             'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'

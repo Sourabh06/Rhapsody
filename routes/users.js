@@ -31,7 +31,7 @@ router.get("/", async function(req, res) {
 
 
 //EDIT
-router.get("/edit", function(req, res){                 //middleware.checkCampgroundOwnership,
+router.get("/edit", middleware.isLoggedIn, function(req, res){                 //middleware.checkCampgroundOwnership,
     User.findById(req.params.id, function(err, foundUser){
         if(err) {
             req.flash("error", "Something went wrong.");
