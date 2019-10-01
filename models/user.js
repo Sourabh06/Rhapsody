@@ -12,12 +12,23 @@ var UserSchema = new mongoose.Schema({
     resetPasswordToken: String,
     resetPasswordExpires: String,
     isAdmin: {type: Boolean, default: false},
+    
     notifications: [
     	{
     	   type: mongoose.Schema.Types.ObjectId,
     	   ref: 'Notification'
     	}
     ],
+    username: {type: String, unique: true, required: true},
+    password: String,
+    avatar: String,
+    firstName: String,
+    lastName: String,
+    email: {type: String, unique: true, required: true},
+    about: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: String,
+    isAdmin: {type: Boolean, default: false},
     followers: [
     	{
     		type: mongoose.Schema.Types.ObjectId,
