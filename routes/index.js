@@ -71,6 +71,12 @@ router.get("/logout", function(req, res){
     req.flash("success", "Logged you out!");
     res.redirect("/campgrounds");
 });
+//logout 
+router.get("/logout_intermediate", function(req, res){
+    req.logout();
+    req.flash("success", "logging out..");
+    res.redirect("/campgrounds");
+});
 
 
 // follow user
