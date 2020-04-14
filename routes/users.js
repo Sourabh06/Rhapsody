@@ -29,7 +29,6 @@ router.get("/", async function(req, res) {
 });
 
 
-
 //EDIT
 router.get("/edit", middleware.isLoggedIn, function(req, res){                 //middleware.checkCampgroundOwnership,
     User.findById(req.params.id, function(err, foundUser){

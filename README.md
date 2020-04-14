@@ -20,5 +20,6 @@
 ## Bugs
 * Can't edit user profile
 * Few placeholders need edit
+* Password reset requires you to alllow less secure apps
 
 [link to my app](https://rhapsody-v1.herokuapp.com/)

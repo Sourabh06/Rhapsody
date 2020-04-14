@@ -8,7 +8,6 @@ Review         = require("../models/review");
 Notification   = require("../models/notification");
 
 
-
 //INDEX
 router.get("/", function(req, res){
     var noMatch = null;
@@ -74,8 +73,6 @@ try {
     res.redirect('back');
   }
 });
-
-
 
 
 //NEW

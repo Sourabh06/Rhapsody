@@ -123,8 +123,6 @@ router.get('/notifications/:id', middleware.isLoggedIn, async function(req, res)
 });
 
 
-
-
 // forgot password
 router.get('/forgot', middleware.isLoggedIn, function(req, res) {
     res.render('forgot');

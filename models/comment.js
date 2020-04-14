@@ -12,7 +12,6 @@ var commentSchema = new mongoose.Schema({
             ref: String
         },
         username: String,
-        password: test
     }
 });
 
