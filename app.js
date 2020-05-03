@@ -27,7 +27,7 @@ mongoose.set('useFindAndModify', false);
 // mongoose.set('useCreateIndex', true);
 
 //for heroku
-// var url = process.env.DATABASEURL || "mongodb+srv://sks_123:admin123@rhapsodycluster-2odm3.mongodb.net/test?retryWrites=true";
+// var url = process.env.DATABASEURL || REDACTED;
 // mongoose.connect(url, {
 //   useNewUrlParser: true,
 //   useCreateIndex: true
